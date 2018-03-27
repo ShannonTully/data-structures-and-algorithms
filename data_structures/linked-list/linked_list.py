@@ -20,7 +20,9 @@ class LinkedList:
         self.head = node.Node(val, self.head)
 
     def find(self, val):
-        if self.head.val == val:
-            return True
-        else:
-            return False
+        current = self.head
+        while current:
+            if val == current.val:
+                return True
+            current = current._next
+        return False
