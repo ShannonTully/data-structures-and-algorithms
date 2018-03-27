@@ -4,7 +4,7 @@ class Node:
         self._next = next
 
     def __str__(self):
-        return self.val
+        return str(self.val)
 
     def __repr__(self):
         return '{}'.format(self.val)
