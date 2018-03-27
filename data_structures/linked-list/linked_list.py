@@ -26,3 +26,21 @@ class LinkedList:
                 return True
             current = current._next
         return False
+
+    def append(self, val):
+        current = self.head
+        while current._next is not None:
+            current = current._next
+        current._next = node.Node(val)
+
+    def insert_before(self, val, new_val):
+        current = self.head
+        while current._next.val != val:
+            current = current._next
+        current = node.Node(new_val, current._next)
+
+    def insert_after(self, val, new_val):
+        current = self.head
+        while current.val != val:
+            current = current._next
+        current.next = node.Node(new_val, current._next)
