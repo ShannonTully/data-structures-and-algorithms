@@ -1,4 +1,5 @@
 import linked_list
+import ll_merge.py
 import pytest
 
 
@@ -44,3 +45,6 @@ def test_after(int_list):
 
 def test_kth(int_list):
     assert int_list.kth_from_end(2).val == 2
+
+def text_merge(int_list, string_list):
+    assert ll_merge.merge_lists(int_list, string_list).val == 1
