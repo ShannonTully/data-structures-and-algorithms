@@ -29,7 +29,7 @@ class LinkedList:
 
     def append(self, val):
         current = self.head
-        while current._next is not None:
+        while current._next:
             current = current._next
         current._next = node.Node(val)
 
