@@ -44,3 +44,10 @@ class LinkedList:
         while current.val != val:
             current = current._next
         current.next = node.Node(new_val, current._next)
+
+    def kth_from_end(self, val):
+        length = self._size
+        runner = node.Node(None, self.head)
+        for item in range(length - val):
+            runner = runner._next
+        return runner

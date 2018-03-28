@@ -33,8 +33,14 @@ def test_string(string_list):
 def test_append(int_list):
     assert int_list.append(5) == [1, 2, 3, 4, 5]
 
+
 def test_before(int_list):
     assert int_list.insert_before(3, 5) == [1, 2, 5, 3, 4]
 
+
 def test_after(int_list):
     assert int_list.insert_after(3, 5) == [1, 2, 3, 5, 4]
+
+
+def test_kth(int_list):
+    assert int_list.kth_from_end(2).val == 2
