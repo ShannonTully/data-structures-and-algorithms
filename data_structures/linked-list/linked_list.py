@@ -51,3 +51,13 @@ class LinkedList:
         for item in range(length - val):
             runner = runner._next
         return runner
+
+    def has_loop(self):
+        length = self._size
+        runner = self.head
+        for i in range(length):
+            if runner._next is None:
+                runner = runner._next
+            else:
+                return True
+        return False
