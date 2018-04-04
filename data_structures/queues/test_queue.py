@@ -16,9 +16,9 @@ def test_empty_val_on_insert(empty_queue):
         empty_queue.enqueue()
 
 
-def test_dequeue_gets_front():
+def test_dequeue_gets_front(small_queue):
     assert small_queue.dequeue() == 5
 
 
-def test_len():
+def test_len(small_queue):
     assert len(small_queue) == 4
