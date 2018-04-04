@@ -6,7 +6,7 @@ class Queue:
         self.front = None
         self.back = None
         self._size = 0
-        for item in reversed(iterable):
+        for item in iterable:
             self.enqueue(item)
 
     def __len__(self):
@@ -16,17 +16,39 @@ class Queue:
         return self.front
 
     def enqueue(self, val):
-    try:
         node = Node(val)
-    except TypeError:
-        print('That value is unacceptable.')
-        exit()
 
-    node._next = self.back
-    self.back = node
-    self._size += 1
+        if self._size == 0:
+            self.front = self.back = node
+            self._size += 1
+            return node
 
-    return self.back
+        # self.back.next = self.back = node
+        
+        self.back.next = node
+        self.back = node
+
+        self._size += 1
+        return node
 
     def dequeue(self, pref):
-        pass
+        if pref in ('cat', 'dog', None):
+            current = self.front
+            current1 = None
+            if self._size == 0:
+                raise IndexError('List is empty')
+            elif self.front.val == pref:
+                temp = self.front
+                self.front = temp.next
+                self._size -= 1
+                return temp.val
+            else:
+                while current._next:
+                    if current._next.val == pref.lower():
+                        current1 = current._next
+                        current._next = current._next._next
+                        self._size -= 1
+                        return current1.val
+                    current = current._next
+        else:
+            print('Not here')
