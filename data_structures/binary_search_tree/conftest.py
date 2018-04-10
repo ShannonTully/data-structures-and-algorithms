@@ -21,3 +21,8 @@ def random_tree():
 @pytest.fixture
 def bigger_tree():
     return BST([20, 15, 12, 18, 25, 28, 22])
+
+
+@pytest.fixture
+def fizzbuzz_tree():
+    return BST([15])
