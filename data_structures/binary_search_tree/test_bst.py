@@ -28,3 +28,21 @@ def test_post_order(random_tree):
     random_tree.post_order(postorder.append)
     assert postorder[-1].val > postorder[0].val
     assert postorder[-1].val < postorder[-2].val
+
+
+def test_valid_breadth(bigger_tree):
+    bread = []
+    bigger_tree.breadth_first_traversal(bread.append)
+    assert bread[0].val > bread[1].val
+    assert bread[0].val < bread[2].val
+
+
+def test_empty_breadth(empty_tree):
+    assert empty_tree.breadth_first_traversal(print) is False
+
+
+def test_random_breadth(random_tree):
+    bread = []
+    random_tree.breadth_first_traversal(bread.append)
+    assert bread[0].val > bread[1].val
+    assert bread[0].val < bread[-1].val
