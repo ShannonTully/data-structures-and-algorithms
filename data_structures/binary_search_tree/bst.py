@@ -24,6 +24,18 @@ class BST:
     def __str__(self):
         return self.root.val
 
+    def breadth_first_traversal(self, operation):
+        if self.root is None:
+            return False
+        queue = [self.root]
+        while len(queue):
+            node = queue.pop(0)
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+            operation(node)
+
     def in_order(self, operation):
         def _walk(node=None):
             if node is None:
