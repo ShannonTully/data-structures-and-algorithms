@@ -1,4 +1,5 @@
 from .k_tree import KTree
+from .find_matches import find_matches
 import pytest
 
 
@@ -53,3 +54,26 @@ def test_complex_valid_print_level(basic_tree):
 456
 7
 '''
+
+
+def test_basic_none_find(basic_tree):
+    """Test find_matches for a basic k-nary tree where there are no matches."""
+    assert find_matches(basic_tree, 2) is False
+
+
+def test_basic_valid_find(basic_tree):
+    """Test find_matches for a basic k-nary tree where there is a match."""
+    assert find_matches(basic_tree, 1)[0].val == 1
+
+
+def test_complex_valid_find(basic_tree):
+    """Test find_matches for a complex k-nary tree where there is a match."""
+    basic_tree.insert(2, basic_tree.root.val)
+    basic_tree.insert(3, basic_tree.root.val)
+    basic_tree.insert(3, 2)
+    basic_tree.insert(5, 2)
+    basic_tree.insert(6, 3)
+    basic_tree.insert(3, 6)
+    assert find_matches(basic_tree, 3)[0].val == 3
+    assert find_matches(basic_tree, 3)[1].val == 3
+    assert find_matches(basic_tree, 3)[2].val == 3
