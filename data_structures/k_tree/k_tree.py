@@ -25,21 +25,6 @@ class KTree:
     def insert(self, val, parent):
         self.breadth_first_traversal(lambda x: x.children.append(Node(val)) if x.val == parent else False)
 
-    def in_order(self, operation):
-        def _walk(node=None):
-            if node is None:
-                return
-
-            if node.left is not None:
-                _walk(node.left)
-
-            operation(node)
-
-            if node.right is not None:
-                _walk(node.right)
-
-        _walk(self.root)
-
     def pre_order(self, operation):
         def _walk(node=None):
             if node is None:
