@@ -4,19 +4,10 @@
 def left_join(HM1, HM2):
     """Left join 2 hash maps."""
     final = dict()
-    count = 0
-    for bucket in HM1.buckets:
-        node = bucket.head
-        for each in range(len(bucket) - 1):
-            final.update(node.val)
-            node = node.next
-            count += 1
+    for key in HM1:
+        final[key] = [HM1.get(key), None]
+    for key in HM2:
+        if key in final:
+            final[key][1] = HM2.get(key)
 
-    for bucket in HM2.buckets:
-        node = bucket.head
-        for each in range(len(bucket) - 1):
-            for bucket1 in HM1.buckets:
-                node1 = bucket1.head
-                for each in range(len(bucket) - 1):
-                    if node.val.items()[0][0] in node1.val:
-                        # nope
+    return final

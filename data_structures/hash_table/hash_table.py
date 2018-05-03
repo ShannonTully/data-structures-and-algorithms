@@ -11,6 +11,17 @@ class HashTable:
         self.max_size = max_size
         self.buckets = [LinkedList() for _ in range(max_size)]
 
+    def __iter__(self):
+        """Allow the hash table to be iterable."""
+        iterable = []
+        for bucket in self.buckets:
+            node = bucket.head
+            while node:
+                for key in node.val.keys():
+                    iterable.append(key)
+                node = node._next
+        return iter(iterable)
+
     def _hash_key(self, val):
         """Get the hashed key."""
         return sum(map(lambda x: ord(x), val)) % self.max_size
